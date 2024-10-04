@@ -10,6 +10,7 @@ const SideBar = () => {
   const [pricePerProduct, setPricePerProduct] = useState([]);
   const [total, setTotal] = useState(0);
   const unique = [...new Set(items)];
+
   useEffect(() => {
     const calculatedPricePerProduct = getPricePerItem(items, unique);
     setPricePerProduct(calculatedPricePerProduct);
@@ -35,14 +36,14 @@ const SideBar = () => {
       {unique &&
         unique.map((product) => (
           <SideBarCard
-            key={product.id}
+            key={product.id + product.title}
             product={product}
             amount={handleProductAmount(product)}
             pricePerProduct={handleProductPrice(product)}
             onClick={handleRemovingItems}
           />
         ))}
-      <p>{"Total: " + roundWithTwoDec(total) + " €"}</p>
+      <p className='total'>{"Total: " + roundWithTwoDec(total) + " €"}</p>
     </div>
   );
 };

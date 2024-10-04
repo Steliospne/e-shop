@@ -9,9 +9,11 @@ const SideBarCard = ({ product, pricePerProduct, amount, onClick }) => {
         height={50}
         unoptimized
       />
-      <p>{"amount: " + amount}</p>
+      <p>{amount === 1 ? amount + " piece" : amount + " pieces"}</p>
       <p>{pricePerProduct + " €"}</p>
-      <button onClick={() => onClick(product)}>-</button>
+      <button className='remove-btn' onClick={() => onClick(product)}>
+        -
+      </button>
     </div>
   );
 };
