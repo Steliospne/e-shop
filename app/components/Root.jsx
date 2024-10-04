@@ -11,7 +11,7 @@ const Root = ({ children, sidebar, navbar }) => {
         <div>
           {navbar}
           <button
-            className='menu btn'
+            className='menu-btn'
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
             Menu
@@ -23,6 +23,6 @@ const Root = ({ children, sidebar, navbar }) => {
       <nav className={isCollapsed ? "sidebar" : "sidebar open"}>{sidebar}</nav>
     </>
   );
-}
+};
 
 export default Root;

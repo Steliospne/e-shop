@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { useCart } from "./Cart";
 import { useState } from "react";
@@ -35,6 +36,7 @@ const Card = ({ product }) => {
   return (
     <div className='card'>
       <Image
+        className='card-img'
         alt='Product image'
         width={50}
         height={50}
@@ -46,7 +48,7 @@ const Card = ({ product }) => {
         <p>{product.price + " €"}</p>
         <div className='btnWrapper'>
           <label htmlFor={"amount" + product.id}>
-            {"Amount: "}
+            {amount === 1 ? "Piece: " : "Pieces: "}
             <input
               value={amount}
               type='number'
@@ -57,11 +59,12 @@ const Card = ({ product }) => {
             />
           </label>
           <button
+            className='add-btn'
             onClick={() => {
               handleClick(product);
             }}
           >
-            Add
+            +
           </button>
         </div>
       </div>
