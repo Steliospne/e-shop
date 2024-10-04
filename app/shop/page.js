@@ -1,18 +1,34 @@
+import { notFound } from "next/navigation";
 import Category from "../components/Category";
+import { fetchData } from "../lib/utils";
 
-const categories = await (
-  await fetch("https://fakestoreapi.com/products/categories")
-).json();
+const getData = async () => {
+  try {
+    const categories = await fetchData(
+      "https://fakestoreapi.com/products/categories"
+    );
+    const men = await fetchData(
+      "https://fakestoreapi.com/products/category/men's clothing"
+    );
+    const women = await fetchData(
+      "https://fakestoreapi.com/products/category/women's clothing"
+    );
 
-const menClothes = await (
-  await fetch("https://fakestoreapi.com/products/category/men's clothing")
-).json();
+    if (!categories || !men || !women) {
+      notFound();
+    }
 
-const womenClothes = await (
-  await fetch("https://fakestoreapi.com/products/category/women's clothing")
-).json();
+    const data = await Promise.all([categories, men, women]);
 
-const Shop = () => {
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const Shop = async () => {
+  const [categories, menClothes, womenClothes] = await getData();
+
   return (
     <>
       <div className='shop'>

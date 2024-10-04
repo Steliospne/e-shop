@@ -31,3 +31,17 @@ export const capitalize = (str) => {
   }
   return str[0].toUpperCase() + str.slice(1);
 };
+
+export const fetchData = async (url) => {
+  try {
+    let res = await fetch(url);
+    if (res.status >= 400) {
+      throw new Error(`Error fetching ${url}: ${res.status}`);
+    }
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(`Fetch failed for ${url}:`, error);
+    throw error; // Rethrow error to handle it at the top level
+  }
+};
