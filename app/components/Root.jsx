@@ -1,9 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "./Cart";
+import CartIcon from "./CartIcon";
 
 const Root = ({ children, sidebar, navbar }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [dark, isDark] = useState(true);
+  useEffect(() => {
+    if (!dark) document.documentElement.setAttribute("theme", "light");
+    else document.documentElement.setAttribute("theme", "dark");
+  }, [dark]);
   const { items } = useCart();
   return (
     <>
@@ -14,7 +20,7 @@ const Root = ({ children, sidebar, navbar }) => {
             className='menu-btn'
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
-            Menu
+            <CartIcon dark={dark} />
           </button>
           <div className='cart-bubble'>{items.length}</div>
         </div>
