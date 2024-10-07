@@ -4,6 +4,7 @@ import Root from "./components/Root";
 import NavBar from "./components/navbar";
 import SideBar from "./components/sidebar";
 import CartProvider from "./components/Cart";
+import { Analytics } from "@vercel/analytics/react";
 
 const RedHatNorm = localFont({
   src: "./fonts/RedHat.ttf",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
             {children}
           </Root>
         </CartProvider>
+        <Analytics />
       </body>
     </html>
   );
