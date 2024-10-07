@@ -485,11 +485,19 @@ main {
     height: auto;
   }
 
+  .listing {
+    flex-direction: column;
+  }
+
+  .total {
+    font-size: 1rem;
+  }
+
   .left-top,
   .left-bottom,
   .right-top,
   .right-bottom {
-    height: 100svh;
+    min-height: 100svh;
   }
 
   .left-bottom,
