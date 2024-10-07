@@ -26,15 +26,24 @@ const getData = async () => {
   }
 };
 
-const Shop = async () => {
+const Shop = async ({ searchParams }) => {
   const [categories, menClothes, womenClothes] = await getData();
-
   return (
     <>
       <div className='shop'>
-        <Category
-          data={[categories.slice(2), menClothes, womenClothes.slice(2)]}
-        ></Category>
+        {searchParams.category !== "men" ? (
+          <Category
+            data={[
+              categories.slice(2).reverse(),
+              menClothes,
+              womenClothes.slice(2),
+            ]}
+          />
+        ) : (
+          <Category
+            data={[categories.slice(2), menClothes, womenClothes.slice(2)]}
+          />
+        )}
       </div>
     </>
   );
