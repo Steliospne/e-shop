@@ -111,7 +111,7 @@ main {
 .theme-btn,
 .home-btn,
 .shop-btn,
-.menu-btn {
+.cart-btn {
   font-size: 1.5rem;
   background: none;
   border: none;
@@ -119,17 +119,17 @@ main {
   font-weight: 550;
   cursor: pointer;
   -webkit-appearance: none;
+  color: var(--on-surface);
 }
 
 .home-btn.active,
-.shop-btn.active,
-.menu-btn.active {
+.shop-btn.active {
   background-color: var(--primary);
   border-radius: 8px;
   color: var(--on-primary);
 }
 
-.menu-btn {
+.cart-btn {
   margin-left: auto;
 }
 
@@ -524,7 +524,8 @@ main {
 @media (hover: hover) {
   .home-btn:hover,
   .shop-btn:hover,
-  .menu-btn:hover {
+  .theme-btn:hover,
+  .cart-btn:hover {
     background-color: var(--primary-hover);
     border-radius: 8px;
     color: var(--on-primary);

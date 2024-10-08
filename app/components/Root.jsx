@@ -17,7 +17,7 @@ const Root = ({ children, sidebar, navbar }) => {
         <div>
           {navbar}
           <button
-            className='menu-btn'
+            className='cart-btn'
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
             <CartIcon dark={dark} />
