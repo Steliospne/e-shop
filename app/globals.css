@@ -118,6 +118,7 @@ main {
   padding: 0.2rem;
   font-weight: 550;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 .home-btn.active,
