@@ -7,9 +7,9 @@ const Card = ({ product }) => {
   const [amount, setAmount] = useState(1);
   const handleInputChange = (e) => {
     const value = e.target.value;
-    if (value[0] === "0" && value[1]) {
-      e.target.value = 0;
-      return;
+    if (value === "0" || value === "") {
+      e.target.value = 1;
+      return setAmount(1);
     }
 
     setAmount(+e.target.value);
@@ -50,9 +50,10 @@ const Card = ({ product }) => {
           <label htmlFor={"amount" + product.id}>
             {amount === 1 ? "Piece: " : "Pieces: "}
             <input
+              defaultValue={1}
               value={amount}
-              type='number'
-              min={0}
+              type='tel'
+              maxLength={4}
               name={"amount" + product.id}
               id={"amount" + product.id}
               onChange={handleInputChange}
